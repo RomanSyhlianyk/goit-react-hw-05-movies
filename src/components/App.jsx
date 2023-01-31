@@ -1,5 +1,3 @@
 export const App = () => {
-  return <header>
-    
-  </header>;
+  return <header></header>;
 };
