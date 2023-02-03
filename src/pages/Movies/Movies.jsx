@@ -1,4 +1,4 @@
-import { getMovieByName, getSearchMovie } from 'api/api';
+import { getMovieByName } from 'api/api';
 import { Loader } from 'components/Loader/Loader';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchForm } from 'components/SearchForm/searchForm';
