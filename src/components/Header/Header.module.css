@@ -1,0 +1,38 @@
+.Header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px;
+  background: #cffcfe;
+  box-shadow: 0 4px 2px -2px rgb(203, 203, 203);
+}
+
+.List {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Item {
+  margin: 0;
+  padding: 0;
+}
+
+.Link {
+  font-weight: 900;
+  color: black;
+  background: #f35050;
+  text-align: center;
+  padding: 15px 0;
+  display: block;
+  width: 90px;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.ActiveLink {
+  background: #783ed5;
+}
