@@ -1,5 +1,5 @@
 import { Link, useLocation,  } from 'react-router-dom';
-
+import { PropTypes } from 'react';
 export const MovieCard = ({ title, id }) => {
     const location = useLocation()
     
@@ -9,3 +9,5 @@ export const MovieCard = ({ title, id }) => {
     </li>
   );
 };
+
+MovieCard.propType()
