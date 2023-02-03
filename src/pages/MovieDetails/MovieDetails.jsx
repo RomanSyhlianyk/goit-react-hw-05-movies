@@ -1,14 +1,10 @@
 import { getMovieById } from 'api/api';
 import { useState, useEffect, Suspense } from 'react';
 import { routes } from '../../routes/routes';
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { Loader } from 'components/Loader/Loader';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const { state } = useLocation();
@@ -38,37 +34,46 @@ const MovieDetails = () => {
   if (isError) return <p>Error</p>;
   if (isLoading) return <Loader />;
   return (
-    <section>
-      <Link to={ref?.current}>Back</Link>
-      {movie.poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt=""
-          width="300"
-        />
-      )}
-      <div>
-        <h2>{movie.title}</h2>
-        <p>User score: {movie.vote_average}</p>
-        <h3>Overview</h3>
-        <p>{movie.overview}</p>
-        <h3>Genres</h3>
-        {movie?.genres && (
-          <ul>
-            {movie.genres.map(({ id, name }) => {
-              return <li key={id}>{name}</li>;
-            })}
-          </ul>
+    <section className={css.Section}>
+      <Link className={css.BackButton} to={ref?.current}>
+        Back
+      </Link>
+      <div className={css.Box}>
+        {movie.poster_path && (
+          <img
+            className={css.Img}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt=""
+            width="300"
+          />
         )}
-        <ul>
-          <li>
-            <Link to={routes.CAST}>Cast</Link>
-          </li>
-          <li>
-            <Link to={routes.REVIEWS}>Reviews</Link>
-          </li>
-        </ul>
+        <div>
+          <h2>{movie.title}</h2>
+          <p>User score: {movie.vote_average}</p>
+          <h3>Overview</h3>
+          <p>{movie.overview}</p>
+          <h3>Genres</h3>
+          {movie?.genres && (
+            <ul>
+              {movie.genres.map(({ id, name }) => {
+                return <li key={id}>{name}</li>;
+              })}
+            </ul>
+          )}
+        </div>
       </div>
+      <ul>
+        <li>
+          <Link className={css.Link} to={routes.CAST}>
+            Cast
+          </Link>
+        </li>
+        <li>
+          <Link className={css.Link} to={routes.REVIEWS}>
+            Reviews
+          </Link>
+        </li>
+      </ul>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
